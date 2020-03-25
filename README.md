@@ -7,4 +7,6 @@ Video 1:
 setup pod file
 add firebase to AppDelegate
 
-Video 2:
+Video 2: no changes to code- all done on firebase control panel
+
+video 3:
