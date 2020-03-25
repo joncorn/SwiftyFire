@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D2651A1242BD72B00238B32 /* PurpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2651A0242BD72B00238B32 /* PurpleButton.swift */; };
+		6D2651A4242BDEFF00238B32 /* FirestoreReferenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2651A3242BDEFF00238B32 /* FirestoreReferenceManager.swift */; };
 		6D7DBB30242BC5F6000EA636 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D7DBB2F242BC5F6000EA636 /* RootViewController.swift */; };
 		6D969594242BAD170088B3C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D969593242BAD170088B3C9 /* AppDelegate.swift */; };
 		6D969596242BAD170088B3C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D969595242BAD170088B3C9 /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 		098F92270604A75901006B36 /* Pods-SwiftyFire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyFire.release.xcconfig"; path = "Target Support Files/Pods-SwiftyFire/Pods-SwiftyFire.release.xcconfig"; sourceTree = "<group>"; };
 		12A03DA72A2A86D36C106F49 /* Pods-SwiftyFire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyFire.debug.xcconfig"; path = "Target Support Files/Pods-SwiftyFire/Pods-SwiftyFire.debug.xcconfig"; sourceTree = "<group>"; };
 		6D2651A0242BD72B00238B32 /* PurpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleButton.swift; sourceTree = "<group>"; };
+		6D2651A3242BDEFF00238B32 /* FirestoreReferenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreReferenceManager.swift; sourceTree = "<group>"; };
 		6D7DBB2F242BC5F6000EA636 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		6D969590242BAD170088B3C9 /* SwiftyFire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyFire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D969593242BAD170088B3C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +54,14 @@
 				6D2651A0242BD72B00238B32 /* PurpleButton.swift */,
 			);
 			path = ViewElements;
+			sourceTree = "<group>";
+		};
+		6D2651A2242BDEE800238B32 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6D2651A3242BDEFF00238B32 /* FirestoreReferenceManager.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		6D7DBB2C242BC5C9000EA636 /* Controllers */ = {
@@ -100,6 +110,7 @@
 		6D969592242BAD170088B3C9 /* SwiftyFire */ = {
 			isa = PBXGroup;
 			children = (
+				6D2651A2242BDEE800238B32 /* Utilities */,
 				6D7DBB2E242BC5D9000EA636 /* Views */,
 				6D7DBB2C242BC5C9000EA636 /* Controllers */,
 				6DF9DB14242BB34F00E84594 /* Resources */,
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D969594242BAD170088B3C9 /* AppDelegate.swift in Sources */,
+				6D2651A4242BDEFF00238B32 /* FirestoreReferenceManager.swift in Sources */,
 				6D2651A1242BD72B00238B32 /* PurpleButton.swift in Sources */,
 				6D969596242BAD170088B3C9 /* SceneDelegate.swift in Sources */,
 				6D7DBB30242BC5F6000EA636 /* RootViewController.swift in Sources */,
