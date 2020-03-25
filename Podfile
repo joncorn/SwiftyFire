@@ -9,6 +9,6 @@ target 'SwiftyFire' do
   
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
-  pod 'FirebaseFirestoreSwift'
+  pod 'TinyConstraints'
 
 end
