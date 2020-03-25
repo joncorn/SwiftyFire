@@ -11,22 +11,31 @@ import Firebase
 import TinyConstraints
 
 class RootViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+  
+  // MARK: - View Elements
+  lazy var addButton: PurpleButton = {
+    let button = PurpleButton(title: "Add")
+    return button
+  }()
+  
+  // MARK: - View Lifecycle
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    view.backgroundColor = .white
+    
+    setupViews()
+    setupAddButton()
+  }
+  
+  // MARK: - Setup Methods
+  func setupViews() {
+    view.addSubview(addButton)
+  }
+  
+  func setupAddButton() {
+    addButton.edgesToSuperview(excluding: .bottom, insets: UIEdgeInsets(top: 32, left: 16, bottom: 0, right: 16), usingSafeArea: true)
+    addButton.height(50)
+  }
+  
 }
