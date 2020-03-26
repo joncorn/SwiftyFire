@@ -12,13 +12,6 @@ import TinyConstraints
 
 class RootViewController: UIViewController {
   
-  // MARK: - View Elements
-  lazy var addButton: PurpleButton = {
-    let button = PurpleButton(title: "Add")
-    button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-    return button
-  }()
-  
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,20 +19,47 @@ class RootViewController: UIViewController {
     view.backgroundColor = .white
     
     setupViews()
-    setupAddButton()
+    setupButtons()
   }
+  
+  // MARK: - View Elements
+  // Add Button
+  lazy var addButton: PurpleButton = {
+    let button = PurpleButton(title: "Add")
+    button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+    return button
+  }()
+  
+  // Update Button
+  lazy var updateButton: PurpleButton = {
+    let button = PurpleButton(title: "Update")
+    button.addTarget(self, action: #selector(updateButtonTapped), for: .touchUpInside)
+    return button
+  }()
   
   // MARK: - Setup Views
+  
+  // Add button to view
   func setupViews() {
     view.addSubview(addButton)
+    view.addSubview(updateButton)
   }
   
-  func setupAddButton() {
+  // Set up button constraints
+  func setupButtons() {
     addButton.edgesToSuperview(excluding: .bottom, insets: UIEdgeInsets(top: 32, left: 16, bottom: 0, right: 16), usingSafeArea: true)
     addButton.height(50)
+    
+    updateButton.topToBottom(of: addButton, offset: 8)
+    updateButton.left(to: addButton)
+    updateButton.right(to: addButton)
+    updateButton.height(50)
   }
   
-  // MARK: - Methods
+  // MARK: - regular button method
+  /**
+   Adds `add data`, `merge data`, `add document`, `documentID reference`, and `add user` functionality
+   */
   @objc fileprivate func buttonTapped() {
     print("Button Pressed")
     
@@ -50,7 +70,8 @@ class RootViewController: UIViewController {
       .document("LA")
       .setData(["name": "Los Angeles",
                 "state": "CA",
-                "country": "USA"]) { (error) in
+                "country": "USA",
+                "favorites": ["food": "Pizza", "color": "Blue", "subject": "Recess"],]) { (error) in
                   if let error = error {
                     print(error, error.localizedDescription)
                   }
@@ -120,6 +141,27 @@ class RootViewController: UIViewController {
         print(error.localizedDescription)
       }
       print("Successfully set user data")
+    }
+  }
+  
+  // MARK: - update button method
+  @objc fileprivate func updateButtonTapped() {
+    
+    // To update some fields of a document without overwriting the entire document, use the update() method
+    let ref = FirestoreReferenceManager
+      .root
+      .collection(FirebaseKeys.CollectionPath.cities)
+      .document("LA")
+    
+    ref.updateData(["name": "Los Angeles Updated",
+                    "favorites.color": "Red",
+                    "updatedAt": FieldValue.serverTimestamp(),
+                    "regions": FieldValue.arrayRemove(["greater_virginia"])]) { (error) in
+//                    "regions": FieldValue.arrayUnion(["greater_virginia"])]) { (error) in
+      if let error = error {
+        print(error.localizedDescription)
+      }
+      print("Successfully updated data")
     }
   }
 }
