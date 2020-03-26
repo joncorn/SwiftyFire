@@ -46,7 +46,7 @@ class RootViewController: UIViewController {
     // MARK:  Add data
     // accessing root directory in firestore database
     FirestoreReferenceManager.root
-      .collection("cities")
+      .collection(FirebaseKeys.CollectionPath.cities)
       .document("LA")
       .setData(["name": "Los Angeles",
                 "state": "CA",
@@ -63,7 +63,7 @@ class RootViewController: UIViewController {
     ]
     
     FirestoreReferenceManager.root
-      .collection("cities")
+      .collection(FirebaseKeys.CollectionPath.cities)
       .document("LA")
       // using the "merge" option with completion will merge instead of replace
       .setData(cityData, merge: true) { (error) in
@@ -81,7 +81,7 @@ class RootViewController: UIViewController {
     
     // Adding new data to our "city" collection
     FirestoreReferenceManager.root
-      .collection("cities")
+      .collection(FirebaseKeys.CollectionPath.cities)
       .addDocument(data: newCityData) { (error) in
       if let error = error {
         print(error.localizedDescription)
@@ -91,7 +91,7 @@ class RootViewController: UIViewController {
     
     // Create a document reference with an auto-generated ID, then use the reference later
     // MARK:  DocumentID reference
-    let ref = FirestoreReferenceManager.root.collection("cities").document()
+    let ref = FirestoreReferenceManager.root.collection(FirebaseKeys.CollectionPath.cities).document()
     let documentID = ref.documentID
     
     let newestCityData = [
@@ -105,6 +105,21 @@ class RootViewController: UIViewController {
         print(error.localizedDescription)
       }
       print("Successfully set newest city data")
+    }
+    
+    // MARK:  Add user
+    let reference = FirestoreReferenceManager.root.collection(FirebaseKeys.CollectionPath.users).document()
+    let uid = reference.documentID
+    let userData = [
+      "uid": uid,
+      "name": "Bob"
+    ]
+    
+    FirestoreReferenceManager.referenceForUserPublicData(uid: uid).setData(userData, merge: true) { (error) in
+      if let error = error {
+        print(error.localizedDescription)
+      }
+      print("Successfully set user data")
     }
   }
 }
