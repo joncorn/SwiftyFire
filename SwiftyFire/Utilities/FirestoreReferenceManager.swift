@@ -12,7 +12,14 @@ struct FirestoreReferenceManager {
   
   // `environment` here refers to the firestore collection and document name
   static let environment = "dev"
-  
   static let db = Firestore.firestore()
   static let root = db.collection(environment).document(environment)
+  
+  static func referenceForUserPublicData(uid: String) -> DocumentReference {
+    return root
+      .collection(FirebaseKeys.CollectionPath.users)
+      .document(uid)
+      .collection(FirebaseKeys.CollectionPath.publicData)
+      .document(FirebaseKeys.CollectionPath.publicData)
+  }
 }
